@@ -33,8 +33,8 @@ public class TestRegistration {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
 
-        
-        driver = new ChromeDriver();
+
+        driver = new ChromeDriver(options);
     }
 
     @AfterEach

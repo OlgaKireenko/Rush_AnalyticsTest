@@ -12,6 +12,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.util.List;
 
+import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -36,22 +37,25 @@ public class TestRegistration {
         driver = null;
     }
     @Test
-    public void registrationTest() {
+    public void registrationTest1() {
         driver.get("https://www.rush-analytics.ru/");
-        //WebElement form = driver.findElement(By.cssSelector("[data-test-id=order-form]"));
-        driver.findElement(By.className("username form-text")).sendKeys("kireenko86.osil@mail.ru");
-        driver.findElement(By.className("text-full form-text required error")).sendKeys("+79270000000");
-        driver.findElement(By.className("text-full form-text required")).sendKeys("Olga");
-        driver.findElement(By.className("form-checkbox required")).click();
-        driver.findElement(By.className("form-submit")).click();
-        String text = driver.findElement(By.className("f-size-24 l-height-34 p-top-7 p-bottom-17")).getText();
+        driver.findElement(By.className("btn-ra-menu-register")).click();
+
+        driver.findElement(By.cssSelector("#edit-name")).sendKeys("kireenko86.osil@mail.ru");
+        driver.findElement(By.cssSelector("#edit-field-phone-und-0-value")).sendKeys("+79270000000");
+        driver.findElement(By.cssSelector("#edit-field-name-und-0-value")).sendKeys("Olga");
+        driver.findElement(By.cssSelector("#edit-field-terms-und")).click();
+        driver.findElement(By.cssSelector("#edit-submit")).click();
+        String text = driver.findElement(By.className("messages error")).getText();
         assertEquals("В течение 5 минут вы получите ссылку для входа на указанный Вами email.", text.trim());
 
 
 
-
-
+        //Thread.sleep(5000);
     }
+
+
+   
 }
 
 

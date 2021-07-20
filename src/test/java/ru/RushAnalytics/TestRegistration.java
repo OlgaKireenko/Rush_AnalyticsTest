@@ -46,8 +46,9 @@ public class TestRegistration {
         driver.findElement(By.cssSelector("#edit-field-name-und-0-value")).sendKeys("Olga");
         driver.findElement(By.cssSelector("#edit-field-terms-und")).click();
         driver.findElement(By.cssSelector("#edit-submit")).click();
-        String text = driver.findElement(By.className("messages error")).getText();
-        assertEquals("В течение 5 минут вы получите ссылку для входа на указанный Вами email.", text.trim());
+        String text = driver.findElement(By.cssSelector("#messages")).getText();
+        assertEquals("Error message\n" +
+                "Этот е-мейл адрес уже зарегистрирован.Забыли пароль?", text.trim());
 
 
 
@@ -55,7 +56,7 @@ public class TestRegistration {
     }
 
 
-   
+
 }
 
 
